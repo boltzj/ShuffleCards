@@ -18,9 +18,7 @@ CardDeck::CardDeck(int size_of_deck)
     // Init the main deck
     deck = new std::deque<int>();
     for (int i = 0; i < size_of_deck; i++)
-    {
         deck->push_front(i);
-    }
 
     // Compute the Lookup Table as a table deck
     table_deck = new std::deque<int>();
@@ -55,19 +53,17 @@ CardDeck::~CardDeck()
 
 int CardDeck::compute()
 {
-    int result = 0;
+    uint64_t result = 0;
     int** decks;
 
     // Using two decks alternatively
-    decks = new int* [2];
-    decks[0] = new int [this->size_of_deck];
-    decks[1] = new int [this->size_of_deck];
+    decks    = new int* [2];
+    decks[0] = new int[this->size_of_deck];
+    decks[1] = new int[this->size_of_deck];
 
     // Init the first deck
     for (int i = 0; i < this->size_of_deck; ++i)
-    {
         decks[0][i] = i;
-    }
 
     while (42)
     {
@@ -77,9 +73,7 @@ int CardDeck::compute()
 
         // Shuffle the cards using the LUT
         for (int i = 0; i < this->size_of_deck; ++i)
-        {
             new_deck[i] = deck[this->shuffle_table[i]];
-        }
 
         // Increment the number of round
         ++result;
